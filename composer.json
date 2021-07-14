@@ -1,0 +1,25 @@
+{
+    "name": "codememory/database-schema",
+    "license": "MIT",
+    "description": "database schema",
+    "authors": [
+        {
+            "name": "Danil",
+            "email": "kostynd1@gmail.com"
+        }
+    ],
+    "require": {
+        "codememory/support": "^1.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Codememory\\Components\\Database\\Schema\\": ""
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^5.3"
+    }
+}
