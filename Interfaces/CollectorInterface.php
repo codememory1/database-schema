@@ -13,13 +13,13 @@ interface CollectorInterface
 {
 
     /**
-     * @return CollectorInterface
+     * @return array
      */
-    public function collect(): CollectorInterface;
+    public function getCollectedResult(): array;
 
     /**
-     * @return string|null
+     * @return string
      */
-    public function get(): ?string;
+    public function __toString(): string;
 
 }

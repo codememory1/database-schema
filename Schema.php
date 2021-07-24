@@ -2,13 +2,7 @@
 
 namespace Codememory\Components\Database\Schema;
 
-use Codememory\Components\Database\Schema\Collectors\SchemaCollector;
-use Codememory\Components\Database\Schema\Helpers\ValueWrapperTrait;
-use Codememory\Components\Database\Schema\Schemes\ChangeSchema;
-use Codememory\Components\Database\Schema\Schemes\ColumnSchema;
-use Codememory\Components\Database\Schema\Schemes\InsertSchema;
-use Codememory\Components\Database\Schema\Schemes\SelectSchema;
-use Codememory\Components\Database\Schema\Schemes\TableSchema;
+use Codememory\Components\Database\Connection\Interfaces\ConnectorInterface;
 
 /**
  * Class Schema
@@ -20,114 +14,29 @@ use Codememory\Components\Database\Schema\Schemes\TableSchema;
 class Schema
 {
 
-    use ValueWrapperTrait;
-
     /**
-     * @var array
+     * @var ConnectorInterface
      */
-    public array $schemes = [];
+    private ConnectorInterface $connector;
 
     /**
-     * @var array
+     * @var string
      */
-    private array $queries = [];
+    private string $driverName;
 
     /**
-     * @param string $sql
+     * Schema constructor.
      *
-     * @return Schema
+     * @param ConnectorInterface $connector
      */
-    public function addSql(string $sql): Schema
+    public function __construct(ConnectorInterface $connector)
     {
 
-        $this->queries[] = $sql;
-
-        return $this;
+        $this->connector = $connector;
+        $this->driverName = $connector->getConnectorData()->getDriver()->getDriverName();
 
     }
 
-    /**
-     * @return TableSchema
-     */
-    public function table(): TableSchema
-    {
 
-        $tableSchema = new TableSchema();
-
-        $this->schemes[] = $tableSchema;
-
-        return $tableSchema;
-
-    }
-
-    /**
-     * @param string $tableName
-     *
-     * @return ColumnSchema
-     */
-    public function alterColumn(string $tableName): ColumnSchema
-    {
-
-        $columnSchema = new ColumnSchema($tableName);
-
-        $this->schemes[] = $columnSchema;
-
-        return $columnSchema;
-
-    }
-
-    /**
-     * @return SelectSchema
-     */
-    public function sampling(): SelectSchema
-    {
-
-        $columnSchema = new SelectSchema();
-
-        $this->schemes[] = $columnSchema;
-
-        return $columnSchema;
-
-    }
-
-    /**
-     * @return ChangeSchema
-     */
-    public function change(): ChangeSchema
-    {
-
-        $changeSchema = new ChangeSchema();
-
-        $this->schemes[] = $changeSchema;
-
-        return $changeSchema;
-
-    }
-
-    /**
-     * @return Schema
-     */
-    public function collectSchemes(): Schema
-    {
-
-        foreach ($this->schemes as $schema) {
-            $schemaCollector = new SchemaCollector($schema);
-
-            $this->queries[] = $schemaCollector->collect()->get();
-        }
-
-        return $this;
-
-    }
-
-    /**
-     * @return array
-     */
-    public function getQueries(): array
-    {
-
-        return $this->queries;
-
-    }
 
 }

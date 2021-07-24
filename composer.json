@@ -9,6 +9,7 @@
         }
     ],
     "require": {
+        "codememory/database-connection": "^1.0",
         "codememory/support": "^1.2"
     },
     "autoload": {

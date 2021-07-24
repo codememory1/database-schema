@@ -3,20 +3,20 @@
 namespace Codememory\Components\Database\Schema\Interfaces;
 
 /**
- * Interface ColumnInterface
+ * Interface ReferenceInterface
  *
  * @package Codememory\Components\Database\Schema\Interfaces
  *
  * @author  Codememory
  */
-interface ColumnInterface
+interface ReferenceInterface
 {
 
     /**
-     * @param string $name
+     * @param callable $callback
      *
-     * @return ColumnTypeInterface
+     * @return ReferenceInterface
      */
-    public function setColumnName(string $name): ColumnTypeInterface;
+    public function add(callable $callback): ReferenceInterface;
 
 }

@@ -2,8 +2,6 @@
 
 namespace Codememory\Components\Database\Schema\Interfaces;
 
-use Codememory\Components\Database\Schema\ColumnParameters;
-
 /**
  * Interface ColumnTypeInterface
  *
@@ -15,209 +13,145 @@ interface ColumnTypeInterface
 {
 
     /**
-     * @param int $length
+     * @param int|null $length
      *
-     * @return ColumnParameters
+     * @return ColumnDefinitionInterface
      */
-    public function char(int $length): ColumnParameters;
+    public function char(?int $length = null): ColumnDefinitionInterface;
 
     /**
-     * @param int $length
+     * @param int|null $length
      *
-     * @return ColumnParameters
+     * @return ColumnDefinitionInterface
      */
-    public function varchar(int $length): ColumnParameters;
+    public function varchar(?int $length = null): ColumnDefinitionInterface;
 
     /**
-     * @return ColumnParameters
+     * @return ColumnDefinitionInterface
      */
-    public function json(): ColumnParameters;
+    public function tinytext(): ColumnDefinitionInterface;
 
     /**
-     * @param int $length
+     * @return ColumnDefinitionInterface
+     */
+    public function text(): ColumnDefinitionInterface;
+
+    /**
+     * @return ColumnDefinitionInterface
+     */
+    public function blob(): ColumnDefinitionInterface;
+
+    /**
+     * @return ColumnDefinitionInterface
+     */
+    public function mediumtext(): ColumnDefinitionInterface;
+
+    /**
+     * @return ColumnDefinitionInterface
+     */
+    public function longtext(): ColumnDefinitionInterface;
+
+    /**
+     * @return ColumnDefinitionInterface
+     */
+    public function longblob(): ColumnDefinitionInterface;
+
+    /**
+     * @param string ...$values
      *
-     * @return ColumnParameters
+     * @return ColumnDefinitionInterface
      */
-    public function binary(int $length): ColumnParameters;
+    public function enum(string ...$values): ColumnDefinitionInterface;
 
     /**
-     * @param int $length
+     * @param string ...$values
      *
-     * @return ColumnParameters
+     * @return ColumnDefinitionInterface
      */
-    public function varbinary(int $length): ColumnParameters;
+    public function set(string ...$values): ColumnDefinitionInterface;
 
     /**
-     * @return ColumnParameters
-     */
-    public function tinyblob(): ColumnParameters;
-
-    /**
-     * @return ColumnParameters
-     */
-    public function tinytext(): ColumnParameters;
-
-    /**
-     * @param int $length
+     * @param int|null $length
      *
-     * @return ColumnParameters
+     * @return ColumnDefinitionInterface
      */
-    public function text(int $length): ColumnParameters;
+    public function tinyint(?int $length = null): ColumnDefinitionInterface;
 
     /**
-     * @param int $length
+     * @param int|null $length
      *
-     * @return ColumnParameters
+     * @return ColumnDefinitionInterface
      */
-    public function blob(int $length): ColumnParameters;
+    public function smallint(?int $length = null): ColumnDefinitionInterface;
 
     /**
-     * @return ColumnParameters
-     */
-    public function mediumtext(): ColumnParameters;
-
-    /**
-     * @return ColumnParameters
-     */
-    public function mediumblob(): ColumnParameters;
-
-    /**
-     * @return ColumnParameters
-     */
-    public function longtext(): ColumnParameters;
-
-    /**
-     * @return ColumnParameters
-     */
-    public function longblob(): ColumnParameters;
-
-    /**
-     * @param int|float|string ...$values
+     * @param int|null $length
      *
-     * @return ColumnParameters
+     * @return ColumnDefinitionInterface
      */
-    public function enum(int|float|string ...$values): ColumnParameters;
+    public function mediumint(?int $length = null): ColumnDefinitionInterface;
 
     /**
-     * @param int|float|string ...$values
+     * @param int|null $length
      *
-     * @return ColumnParameters
+     * @return ColumnDefinitionInterface
      */
-    public function set(int|float|string ...$values): ColumnParameters;
+    public function int(?int $length = null): ColumnDefinitionInterface;
 
     /**
-     * @param int $length
+     * @param int|null $length
      *
-     * @return ColumnParameters
+     * @return ColumnDefinitionInterface
      */
-    public function bit(int $length): ColumnParameters;
+    public function bigint(?int $length = null): ColumnDefinitionInterface;
 
     /**
-     * @param int $length
+     * @param int|null $length
+     * @param int|null $afterSeparator
      *
-     * @return ColumnParameters
+     * @return ColumnDefinitionInterface
      */
-    public function tinyint(int $length): ColumnParameters;
+    public function float(?int $length = null, ?int $afterSeparator = null): ColumnDefinitionInterface;
 
     /**
-     * @return ColumnParameters
-     */
-    public function bool(): ColumnParameters;
-
-    /**
-     * @return ColumnParameters
-     */
-    public function boolean(): ColumnParameters;
-
-    /**
-     * @param int $length
+     * @param int|null $length
+     * @param int|null $afterSeparator
      *
-     * @return ColumnParameters
+     * @return ColumnDefinitionInterface
      */
-    public function smallint(int $length): ColumnParameters;
+    public function double(?int $length = null, ?int $afterSeparator = null): ColumnDefinitionInterface;
 
     /**
-     * @param int $length
+     * @param int|null $length
+     * @param int|null $afterSeparator
      *
-     * @return ColumnParameters
+     * @return ColumnDefinitionInterface
      */
-    public function mediumint(int $length): ColumnParameters;
+    public function decimal(?int $length = null, ?int $afterSeparator = null): ColumnDefinitionInterface;
 
     /**
-     * @param int $length
-     *
-     * @return ColumnParameters
+     * @return ColumnDefinitionInterface
      */
-    public function int(int $length): ColumnParameters;
+    public function date(): ColumnDefinitionInterface;
 
     /**
-     * @param int $length
-     *
-     * @return ColumnParameters
+     * @return ColumnDefinitionInterface
      */
-    public function integer(int $length): ColumnParameters;
+    public function datetime(): ColumnDefinitionInterface;
 
     /**
-     * @param int $length
-     *
-     * @return ColumnParameters
+     * @return ColumnDefinitionInterface
      */
-    public function bigint(int $length): ColumnParameters;
+    public function timestamp(): ColumnDefinitionInterface;
 
     /**
-     * @param int $length
-     *
-     * @return ColumnParameters
+     * @return ColumnDefinitionInterface
      */
-    public function float(int $length): ColumnParameters;
+    public function time(): ColumnDefinitionInterface;
 
     /**
-     * @param int $length
-     *
-     * @return ColumnParameters
+     * @return ColumnDefinitionInterface
      */
-    public function double(int $length): ColumnParameters;
-
-    /**
-     * @param int $length
-     * @param int      $afterPoint
-     *
-     * @return ColumnParameters
-     */
-    public function decimal(int $length, int $afterPoint = 3): ColumnParameters;
-
-    /**
-     * @param int $length
-     * @param int      $afterPoint
-     *
-     * @return ColumnParameters
-     */
-    public function desc(int $length, int $afterPoint = 3): ColumnParameters;
-
-    /**
-     * @param string $format
-     *
-     * @return ColumnParameters
-     */
-    public function datetime(string $format = 'YYYY-MM-DD hh:mm:ss'): ColumnParameters;
-
-    /**
-     * @param string $format
-     *
-     * @return ColumnParameters
-     */
-    public function timestamp(string $format = 'YYYY-MM-DD hh:mm:ss'): ColumnParameters;
-
-    /**
-     * @param string $format
-     *
-     * @return ColumnParameters
-     */
-    public function time(string $format = 'hh:mm:ss'): ColumnParameters;
-
-    /**
-     * @return ColumnParameters
-     */
-    public function year(): ColumnParameters;
+    public function year(): ColumnDefinitionInterface;
 
 }
