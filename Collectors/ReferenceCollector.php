@@ -33,7 +33,7 @@ class ReferenceCollector implements CollectorInterface
     }
 
     /**
-     * @return array
+     * @inheritDoc
      */
     public function getCollectedResult(): array
     {
@@ -66,7 +66,7 @@ class ReferenceCollector implements CollectorInterface
     }
 
     /**
-     * @return string
+     * @inheritDoc
      */
     public function __toString(): string
     {

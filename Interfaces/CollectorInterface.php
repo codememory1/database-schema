@@ -13,11 +13,19 @@ interface CollectorInterface
 {
 
     /**
+     * =>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>
+     * Gathers and returns an array of collected requests
+     * <=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=
+     *
      * @return array
      */
     public function getCollectedResult(): array;
 
     /**
+     * =>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>
+     * Returns a sql query as a string
+     * <=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=
+     *
      * @return string
      */
     public function __toString(): string;

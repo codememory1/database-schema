@@ -33,6 +33,18 @@ class Delete implements StatementInterface
     /**
      * @return Delete
      */
+    public function delete(): Delete
+    {
+
+        $this->commands[] = 'DELETE';
+
+        return $this;
+
+    }
+
+    /**
+     * @return Delete
+     */
     public function lowPriority(): Delete
     {
 
@@ -105,7 +117,7 @@ class Delete implements StatementInterface
     public function getQuery(): ?string
     {
 
-        return sprintf('DELETE %s', implode(' ', $this->commands));
+        return implode(' ', $this->commands);
 
     }
 

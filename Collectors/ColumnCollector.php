@@ -36,7 +36,7 @@ class ColumnCollector implements CollectorInterface
     }
 
     /**
-     * @return array
+     * @inheritDoc
      */
     public function getCollectedResult(): array
     {
@@ -67,7 +67,7 @@ class ColumnCollector implements CollectorInterface
     }
 
     /**
-     * @return string
+     * @inheritDoc
      */
     public function __toString(): string
     {

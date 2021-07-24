@@ -13,6 +13,10 @@ interface StatementInterface
 {
 
     /**
+     * =>=>=>=>=>=>=>=>=>=>=>=>=>=>
+     * Returns a sql statement
+     * <=<=<=<=<=<=<=<=<=<=<=<=<=<=
+     *
      * @return string|null
      */
     public function getQuery(): ?string;

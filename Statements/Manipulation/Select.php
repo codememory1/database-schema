@@ -10,7 +10,6 @@ use Codememory\Components\Database\Schema\ComponentCreators\OrderCreatorTrait;
 use Codememory\Components\Database\Schema\ComponentCreators\WhereCreatorTrait;
 use Codememory\Components\Database\Schema\Helpers\ValueWrapperTrait;
 use Codememory\Components\Database\Schema\Interfaces\StatementInterface;
-use JetBrains\PhpStorm\Pure;
 
 /**
  * Class Select
@@ -38,11 +37,12 @@ class Select implements StatementInterface
     /**
      * @return Select
      */
-    #[Pure]
-    public function newObject(): Select
+    public function select(): Select
     {
 
-        return clone new self();
+        $this->commands[] = 'SELECT';
+
+        return $this;
 
     }
 
@@ -130,12 +130,24 @@ class Select implements StatementInterface
     }
 
     /**
+     * @return Select
+     */
+    public function union(): Select
+    {
+
+        $this->commands[] = 'UNION';
+
+        return $this;
+
+    }
+
+    /**
      * @inheritDoc
      */
     public function getQuery(): ?string
     {
 
-        return sprintf('SELECT %s', implode(' ', $this->commands));
+        return implode(' ', $this->commands);
 
     }
 

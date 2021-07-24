@@ -32,6 +32,18 @@ class Update implements StatementInterface
     private array $commands = [];
 
     /**
+     * @return Update
+     */
+    public function update(): Update
+    {
+
+        $this->commands[] = 'UPDATE';
+
+        return $this;
+
+    }
+
+    /**
      * @param array $tables
      *
      * @return Update
@@ -86,7 +98,7 @@ class Update implements StatementInterface
     public function getQuery(): ?string
     {
 
-        return sprintf('UPDATE %s', implode(' ', $this->commands));
+        return implode(' ', $this->commands);
 
     }
 

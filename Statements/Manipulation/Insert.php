@@ -25,6 +25,18 @@ class Insert implements StatementInterface
     /**
      * @return Insert
      */
+    public function insert(): Insert
+    {
+
+        $this->commands[] = 'INSERT INTO';
+
+        return $this;
+
+    }
+
+    /**
+     * @return Insert
+     */
     public function lowPriority(): Insert
     {
 
@@ -124,7 +136,7 @@ class Insert implements StatementInterface
     public function getQuery(): ?string
     {
 
-        return sprintf('INSERT INTO %s', implode(' ', $this->commands));
+        return implode(' ', $this->commands);
 
     }
 
