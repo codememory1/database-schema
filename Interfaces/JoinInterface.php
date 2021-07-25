@@ -9,7 +9,7 @@ namespace Codememory\Components\Database\Schema\Interfaces;
  *
  * @author  Codememory
  */
-interface JoinInterface
+interface JoinInterface extends JoinSpecificationInterface
 {
 
     /**
@@ -35,19 +35,5 @@ interface JoinInterface
      * @return JoinInterface
      */
     public function rightJoin(array $tables, string $specification): JoinInterface;
-
-    /**
-     * @param ExpressionInterface $expression
-     *
-     * @return string
-     */
-    public function on(ExpressionInterface $expression): string;
-
-    /**
-     * @param array $columns
-     *
-     * @return string
-     */
-    public function using(array $columns): string;
 
 }
