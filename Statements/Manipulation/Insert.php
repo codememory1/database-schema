@@ -3,6 +3,7 @@
 namespace Codememory\Components\Database\Schema\Statements\Manipulation;
 
 use Codememory\Components\Database\Schema\Helpers\ValueWrapperTrait;
+use Codememory\Components\Database\Schema\Interfaces\InsertInterface;
 use Codememory\Components\Database\Schema\Interfaces\StatementInterface;
 
 /**
@@ -12,7 +13,7 @@ use Codememory\Components\Database\Schema\Interfaces\StatementInterface;
  *
  * @author  Codememory
  */
-class Insert implements StatementInterface
+class Insert implements StatementInterface, InsertInterface
 {
 
     use ValueWrapperTrait;
@@ -23,9 +24,9 @@ class Insert implements StatementInterface
     private array $commands = [];
 
     /**
-     * @return Insert
+     * @inheritDoc
      */
-    public function insert(): Insert
+    public function insert(): InsertInterface
     {
 
         $this->commands[] = 'INSERT INTO';
@@ -35,9 +36,9 @@ class Insert implements StatementInterface
     }
 
     /**
-     * @return Insert
+     * @inheritDoc
      */
-    public function lowPriority(): Insert
+    public function lowPriority(): InsertInterface
     {
 
         $this->commands[] = 'LOW_PRIORITY';
@@ -47,9 +48,9 @@ class Insert implements StatementInterface
     }
 
     /**
-     * @return Insert
+     * @inheritDoc
      */
-    public function highPriority(): Insert
+    public function highPriority(): InsertInterface
     {
 
         $this->commands[] = 'HIGH_PRIORITY';
@@ -59,9 +60,9 @@ class Insert implements StatementInterface
     }
 
     /**
-     * @return Insert
+     * @inheritDoc
      */
-    public function ignore(): Insert
+    public function ignore(): InsertInterface
     {
 
         $this->commands[] = 'IGNORE';
@@ -71,11 +72,9 @@ class Insert implements StatementInterface
     }
 
     /**
-     * @param string $tableName
-     *
-     * @return Insert
+     * @inheritDoc
      */
-    public function table(string $tableName): Insert
+    public function table(string $tableName): InsertInterface
     {
 
         $this->commands[] = $this->autoWrapAsReserved($tableName);
@@ -85,11 +84,9 @@ class Insert implements StatementInterface
     }
 
     /**
-     * @param string ...$columns
-     *
-     * @return Insert
+     * @inheritDoc
      */
-    public function columns(string ...$columns): Insert
+    public function columns(string ...$columns): InsertInterface
     {
 
         $columns = array_map(function (string $column) {
@@ -103,11 +100,9 @@ class Insert implements StatementInterface
     }
 
     /**
-     * @param mixed ...$records
-     *
-     * @return Insert
+     * @inheritDoc
      */
-    public function records(array ...$records): Insert
+    public function records(array ...$records): InsertInterface
     {
 
         $this->createRecords($records);
@@ -117,11 +112,9 @@ class Insert implements StatementInterface
     }
 
     /**
-     * @param mixed ...$records
-     *
-     * @return Insert
+     * @inheritDoc
      */
-    public function rowRecords(array ...$records): Insert
+    public function rowRecords(array ...$records): InsertInterface
     {
 
         $this->createRecords($records, 'ROW');

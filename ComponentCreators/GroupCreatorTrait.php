@@ -16,9 +16,7 @@ trait GroupCreatorTrait
 {
 
     /**
-     * @param Group $group
-     *
-     * @return static
+     * @inheritDoc
      */
     public function groupBy(Group $group): static
     {

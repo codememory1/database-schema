@@ -3,6 +3,7 @@
 namespace Codememory\Components\Database\Schema\StatementComponents;
 
 use Codememory\Components\Database\Schema\Helpers\ValueWrapperTrait;
+use Codememory\Components\Database\Schema\Interfaces\OrderInterface;
 use Codememory\Support\Str;
 
 /**
@@ -12,7 +13,7 @@ use Codememory\Support\Str;
  *
  * @author  Codememory
  */
-class Order
+class Order implements OrderInterface
 {
 
     use ValueWrapperTrait;
@@ -23,12 +24,9 @@ class Order
     private array $commands = [];
 
     /**
-     * @param array|string $columns
-     * @param array|string $types
-     *
-     * @return Order
+     * @inheritDoc
      */
-    public function columns(array|string $columns, array|string $types = 'asc'): Order
+    public function columns(array|string $columns, array|string $types = 'asc'): OrderInterface
     {
 
         $columns = is_string($columns) ? [$columns] : $columns;
@@ -48,9 +46,9 @@ class Order
     }
 
     /**
-     * @return Order
+     * @inheritDoc
      */
-    public function withRollup(): Order
+    public function withRollup(): OrderInterface
     {
 
         $this->commands[] = 'WITH ROLLUP';

@@ -8,6 +8,7 @@ use Codememory\Components\Database\Schema\ComponentCreators\OrderCreatorTrait;
 use Codememory\Components\Database\Schema\ComponentCreators\WhereCreatorTrait;
 use Codememory\Components\Database\Schema\Helpers\ValueWrapperTrait;
 use Codememory\Components\Database\Schema\Interfaces\StatementInterface;
+use Codememory\Components\Database\Schema\Interfaces\UpdateInterface;
 use Codememory\Support\Arr;
 
 /**
@@ -17,7 +18,7 @@ use Codememory\Support\Arr;
  *
  * @author  Codememory
  */
-class Update implements StatementInterface
+class Update implements StatementInterface, UpdateInterface
 {
 
     use ValueWrapperTrait;
@@ -32,9 +33,9 @@ class Update implements StatementInterface
     private array $commands = [];
 
     /**
-     * @return Update
+     * @inheritDoc
      */
-    public function update(): Update
+    public function update(): UpdateInterface
     {
 
         $this->commands[] = 'UPDATE';
@@ -44,11 +45,9 @@ class Update implements StatementInterface
     }
 
     /**
-     * @param array $tables
-     *
-     * @return Update
+     * @inheritDoc
      */
-    public function tables(array $tables): Update
+    public function tables(array $tables): UpdateInterface
     {
 
         $collectedNameTables = [];
@@ -68,12 +67,9 @@ class Update implements StatementInterface
     }
 
     /**
-     * @param array $columns
-     * @param array $values
-     *
-     * @return Update
+     * @inheritDoc
      */
-    public function setData(array $columns, array $values): Update
+    public function setData(array $columns, array $values): UpdateInterface
     {
 
         $columns = Arr::wholeKeys($columns);

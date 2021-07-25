@@ -3,6 +3,7 @@
 namespace Codememory\Components\Database\Schema\StatementComponents;
 
 use Codememory\Components\Database\Schema\Helpers\ValueWrapperTrait;
+use Codememory\Components\Database\Schema\Interfaces\GroupInterface;
 
 /**
  * Class Group
@@ -11,7 +12,7 @@ use Codememory\Components\Database\Schema\Helpers\ValueWrapperTrait;
  *
  * @author  Codememory
  */
-class Group
+class Group implements GroupInterface
 {
 
     use ValueWrapperTrait;
@@ -22,11 +23,9 @@ class Group
     private array $command = [];
 
     /**
-     * @param string ...$columns
-     *
-     * @return $this
+     * @inheritDoc
      */
-    public function columns(string ...$columns): Group
+    public function columns(string ...$columns): GroupInterface
     {
 
         $columns = array_map(function (mixed $column) {
@@ -40,9 +39,9 @@ class Group
     }
 
     /**
-     * @return Group
+     * @inheritDoc
      */
-    public function withRollup(): Group
+    public function withRollup(): GroupInterface
     {
 
         $this->command[] = 'WITH ROLLUP';

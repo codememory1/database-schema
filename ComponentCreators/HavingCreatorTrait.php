@@ -16,9 +16,7 @@ trait HavingCreatorTrait
 {
 
     /**
-     * @param Expression $expression
-     *
-     * @return static
+     * @inheritDoc
      */
     public function having(Expression $expression): static
     {

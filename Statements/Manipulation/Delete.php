@@ -7,6 +7,7 @@ use Codememory\Components\Database\Schema\ComponentCreators\LimitCreatorTrait;
 use Codememory\Components\Database\Schema\ComponentCreators\OrderCreatorTrait;
 use Codememory\Components\Database\Schema\ComponentCreators\WhereCreatorTrait;
 use Codememory\Components\Database\Schema\Helpers\ValueWrapperTrait;
+use Codememory\Components\Database\Schema\Interfaces\DeleteInterface;
 use Codememory\Components\Database\Schema\Interfaces\StatementInterface;
 
 /**
@@ -16,7 +17,7 @@ use Codememory\Components\Database\Schema\Interfaces\StatementInterface;
  *
  * @author  Codememory
  */
-class Delete implements StatementInterface
+class Delete implements StatementInterface, DeleteInterface
 {
 
     use ValueWrapperTrait;
@@ -31,9 +32,9 @@ class Delete implements StatementInterface
     private array $commands = [];
 
     /**
-     * @return Delete
+     * @inheritDoc
      */
-    public function delete(): Delete
+    public function delete(): DeleteInterface
     {
 
         $this->commands[] = 'DELETE';
@@ -43,9 +44,9 @@ class Delete implements StatementInterface
     }
 
     /**
-     * @return Delete
+     * @inheritDoc
      */
-    public function lowPriority(): Delete
+    public function lowPriority(): DeleteInterface
     {
 
         $this->commands[] = 'LOW_PRIORITY';
@@ -55,9 +56,9 @@ class Delete implements StatementInterface
     }
 
     /**
-     * @return Delete
+     * @inheritDoc
      */
-    public function quick(): Delete
+    public function quick(): DeleteInterface
     {
 
         $this->commands[] = 'QUICK';
@@ -67,9 +68,9 @@ class Delete implements StatementInterface
     }
 
     /**
-     * @return Delete
+     * @inheritDoc
      */
-    public function ignore(): Delete
+    public function ignore(): DeleteInterface
     {
 
         $this->commands[] = 'IGNORE';
@@ -79,11 +80,9 @@ class Delete implements StatementInterface
     }
 
     /**
-     * @param array $tables
-     *
-     * @return Delete
+     * @inheritDoc
      */
-    public function from(array $tables): Delete
+    public function from(array $tables): DeleteInterface
     {
 
         $aliases = [];

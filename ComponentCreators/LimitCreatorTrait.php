@@ -13,10 +13,7 @@ trait LimitCreatorTrait
 {
 
     /**
-     * @param int      $from
-     * @param int|null $before
-     *
-     * @return static
+     * @inheritDoc
      */
     public function limit(int $from, ?int $before = null): static
     {

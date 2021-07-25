@@ -9,6 +9,7 @@ use Codememory\Components\Database\Schema\ComponentCreators\LimitCreatorTrait;
 use Codememory\Components\Database\Schema\ComponentCreators\OrderCreatorTrait;
 use Codememory\Components\Database\Schema\ComponentCreators\WhereCreatorTrait;
 use Codememory\Components\Database\Schema\Helpers\ValueWrapperTrait;
+use Codememory\Components\Database\Schema\Interfaces\SelectInterface;
 use Codememory\Components\Database\Schema\Interfaces\StatementInterface;
 
 /**
@@ -18,7 +19,7 @@ use Codememory\Components\Database\Schema\Interfaces\StatementInterface;
  *
  * @author  Codememory
  */
-class Select implements StatementInterface
+class Select implements StatementInterface, SelectInterface
 {
 
     use ValueWrapperTrait;
@@ -35,9 +36,9 @@ class Select implements StatementInterface
     private array $commands = [];
 
     /**
-     * @return Select
+     * @inheritDoc
      */
-    public function select(): Select
+    public function select(): SelectInterface
     {
 
         $this->commands[] = 'SELECT';
@@ -47,11 +48,9 @@ class Select implements StatementInterface
     }
 
     /**
-     * @param array $columns
-     *
-     * @return Select
+     * @inheritDoc
      */
-    public function columns(array $columns = []): Select
+    public function columns(array $columns = []): SelectInterface
     {
 
         $collectedNameColumns = [];
@@ -73,9 +72,9 @@ class Select implements StatementInterface
     }
 
     /**
-     * @return Select
+     * @inheritDoc
      */
-    public function all(): Select
+    public function all(): SelectInterface
     {
 
         $this->commands[] = 'ALL';
@@ -85,9 +84,9 @@ class Select implements StatementInterface
     }
 
     /**
-     * @return Select
+     * @inheritDoc
      */
-    public function distinct(): Select
+    public function distinct(): SelectInterface
     {
 
         $this->commands[] = 'DISTINCT';
@@ -97,9 +96,9 @@ class Select implements StatementInterface
     }
 
     /**
-     * @return Select
+     * @inheritDoc
      */
-    public function distinctrow(): Select
+    public function distinctrow(): SelectInterface
     {
 
         $this->commands[] = 'DISTINCTROW';
@@ -109,12 +108,9 @@ class Select implements StatementInterface
     }
 
     /**
-     * @param string      $table
-     * @param string|null $alias
-     *
-     * @return Select
+     * @inheritDoc
      */
-    public function from(string $table, ?string $alias = null): Select
+    public function from(string $table, ?string $alias = null): SelectInterface
     {
 
         $from = $this->autoWrapAsReserved($table);
@@ -130,9 +126,9 @@ class Select implements StatementInterface
     }
 
     /**
-     * @return Select
+     * @inheritDoc
      */
-    public function union(): Select
+    public function union(): SelectInterface
     {
 
         $this->commands[] = 'UNION';

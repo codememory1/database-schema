@@ -16,9 +16,7 @@ trait JoinCreatorTrait
 {
 
     /**
-     * @param Join $join
-     *
-     * @return static
+     * @inheritDoc
      */
     public function join(Join $join): static
     {

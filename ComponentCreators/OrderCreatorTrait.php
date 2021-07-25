@@ -19,9 +19,7 @@ trait OrderCreatorTrait
     use ValueWrapperTrait;
 
     /**
-     * @param Order $order
-     *
-     * @return static
+     * @inheritDoc
      */
     public function orderBy(Order $order): static
     {

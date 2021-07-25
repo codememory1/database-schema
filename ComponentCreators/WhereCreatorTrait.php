@@ -16,9 +16,7 @@ trait WhereCreatorTrait
 {
 
     /**
-     * @param Expression $expression
-     *
-     * @return static
+     * @inheritDoc
      */
     public function where(Expression $expression): static
     {
