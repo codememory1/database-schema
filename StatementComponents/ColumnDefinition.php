@@ -123,7 +123,31 @@ class ColumnDefinition implements ColumnDefinitionInterface
     /**
      * @inheritDoc
      */
+    public function character(string $charset): ColumnDefinitionInterface
+    {
+
+        $this->addCommand('character set', [$charset]);
+
+        return $this;
+
+    }
+
+    /**
+     * @inheritDoc
+     */
     public function collate(string $collate): ColumnDefinitionInterface
+    {
+
+        $this->addCommand('collate', [$collate]);
+
+        return $this;
+
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function collateWithCharacter(string $collate): ColumnDefinitionInterface
     {
 
         $charset = Str::trimAfterSymbol($collate, '_');

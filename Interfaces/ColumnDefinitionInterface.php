@@ -69,11 +69,25 @@ interface ColumnDefinitionInterface
     public function comment(string $comment): ColumnDefinitionInterface;
 
     /**
+     * @param string $charset
+     *
+     * @return ColumnDefinitionInterface
+     */
+    public function character(string $charset): ColumnDefinitionInterface;
+
+    /**
      * @param string $collate
      *
      * @return ColumnDefinitionInterface
      */
     public function collate(string $collate): ColumnDefinitionInterface;
+
+    /**
+     * @param string $collate
+     *
+     * @return ColumnDefinitionInterface
+     */
+    public function collateWithCharacter(string $collate): ColumnDefinitionInterface;
 
     /**
      * @param string $format
