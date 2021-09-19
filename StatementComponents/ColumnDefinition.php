@@ -219,12 +219,9 @@ class ColumnDefinition implements ColumnDefinitionInterface
     {
 
         $parametersToString = implode(' ', $parameters);
+        $commands = [Str::toUppercase($command)];
 
-        $commands = [
-            Str::toUppercase($command)
-        ];
-
-        if (!empty($parametersToString)) {
+        if ([] !== $parameters) {
             $commands[] = $parametersToString;
         }
 
