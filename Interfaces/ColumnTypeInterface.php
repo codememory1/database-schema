@@ -154,4 +154,9 @@ interface ColumnTypeInterface
      */
     public function year(): ColumnDefinitionInterface;
 
+    /**
+     * @return ColumnDefinitionInterface
+     */
+    public function json(): ColumnDefinitionInterface;
+
 }

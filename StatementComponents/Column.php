@@ -294,6 +294,17 @@ class Column implements ColumnInterface, ColumnTypeInterface
     }
 
     /**
+     * @inheritDoc
+     * @throws ColumnNameNotSpecifiedException
+     */
+    public function json(): ColumnDefinitionInterface
+    {
+
+        return $this->addCommand('json');
+
+    }
+
+    /**
      * @return array
      */
     public function getColumns(): array
