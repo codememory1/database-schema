@@ -13,150 +13,132 @@ interface ColumnTypeInterface
 {
 
     /**
-     * @param int|null $length
-     *
-     * @return ColumnDefinitionInterface
+     * @return ColumnOptionsInterface
      */
-    public function char(?int $length = null): ColumnDefinitionInterface;
+    public function array(): ColumnOptionsInterface;
 
     /**
      * @param int|null $length
      *
-     * @return ColumnDefinitionInterface
+     * @return ColumnOptionsInterface
      */
-    public function varchar(?int $length = null): ColumnDefinitionInterface;
+    public function asciiString(?int $length = null): ColumnOptionsInterface;
 
     /**
-     * @return ColumnDefinitionInterface
+     * @return ColumnOptionsInterface
      */
-    public function tinytext(): ColumnDefinitionInterface;
+    public function bigInteger(): ColumnOptionsInterface;
 
     /**
-     * @return ColumnDefinitionInterface
+     * @return ColumnOptionsInterface
      */
-    public function text(): ColumnDefinitionInterface;
+    public function binary(): ColumnOptionsInterface;
 
     /**
-     * @return ColumnDefinitionInterface
+     * @return ColumnOptionsInterface
      */
-    public function blob(): ColumnDefinitionInterface;
+    public function blob(): ColumnOptionsInterface;
 
     /**
-     * @return ColumnDefinitionInterface
+     * @return ColumnOptionsInterface
      */
-    public function mediumtext(): ColumnDefinitionInterface;
+    public function boolean(): ColumnOptionsInterface;
 
     /**
-     * @return ColumnDefinitionInterface
+     * @return ColumnOptionsInterface
      */
-    public function longtext(): ColumnDefinitionInterface;
+    public function date(): ColumnOptionsInterface;
 
     /**
-     * @return ColumnDefinitionInterface
+     * @return ColumnOptionsInterface
      */
-    public function longblob(): ColumnDefinitionInterface;
+    public function dateImmutable(): ColumnOptionsInterface;
 
     /**
-     * @param string ...$values
-     *
-     * @return ColumnDefinitionInterface
+     * @return ColumnOptionsInterface
      */
-    public function enum(string ...$values): ColumnDefinitionInterface;
+    public function dateInterval(): ColumnOptionsInterface;
 
     /**
-     * @param string ...$values
-     *
-     * @return ColumnDefinitionInterface
+     * @return ColumnOptionsInterface
      */
-    public function set(string ...$values): ColumnDefinitionInterface;
+    public function datetime(): ColumnOptionsInterface;
+
+    /**
+     * @return ColumnOptionsInterface
+     */
+    public function datetimeImmutable(): ColumnOptionsInterface;
+
+    /**
+     * @return ColumnOptionsInterface
+     */
+    public function datetimeTZ(): ColumnOptionsInterface;
+
+    /**
+     * @return ColumnOptionsInterface
+     */
+    public function datetimeTZImmutable(): ColumnOptionsInterface;
+
+    /**
+     * @return ColumnOptionsInterface
+     */
+    public function time(): ColumnOptionsInterface;
+
+    /**
+     * @return ColumnOptionsInterface
+     */
+    public function timeImmutable(): ColumnOptionsInterface;
+
+    /**
+     * @return ColumnOptionsInterface
+     */
+    public function decimal(): ColumnOptionsInterface;
+
+    /**
+     * @return ColumnOptionsInterface
+     */
+    public function float(): ColumnOptionsInterface;
+
+    /**
+     * @return ColumnOptionsInterface
+     */
+    public function guid(): ColumnOptionsInterface;
+
+    /**
+     * @return ColumnOptionsInterface
+     */
+    public function integer(): ColumnOptionsInterface;
+
+    /**
+     * @return ColumnOptionsInterface
+     */
+    public function json(): ColumnOptionsInterface;
+
+    /**
+     * @return ColumnOptionsInterface
+     */
+    public function object(): ColumnOptionsInterface;
+
+    /**
+     * @return ColumnOptionsInterface
+     */
+    public function simpleArray(): ColumnOptionsInterface;
+
+    /**
+     * @return ColumnOptionsInterface
+     */
+    public function smallint(): ColumnOptionsInterface;
 
     /**
      * @param int|null $length
      *
-     * @return ColumnDefinitionInterface
+     * @return ColumnOptionsInterface
      */
-    public function tinyint(?int $length = null): ColumnDefinitionInterface;
+    public function string(?int $length = null): ColumnOptionsInterface;
 
     /**
-     * @param int|null $length
-     *
-     * @return ColumnDefinitionInterface
+     * @return ColumnOptionsInterface
      */
-    public function smallint(?int $length = null): ColumnDefinitionInterface;
-
-    /**
-     * @param int|null $length
-     *
-     * @return ColumnDefinitionInterface
-     */
-    public function mediumint(?int $length = null): ColumnDefinitionInterface;
-
-    /**
-     * @param int|null $length
-     *
-     * @return ColumnDefinitionInterface
-     */
-    public function int(?int $length = null): ColumnDefinitionInterface;
-
-    /**
-     * @param int|null $length
-     *
-     * @return ColumnDefinitionInterface
-     */
-    public function bigint(?int $length = null): ColumnDefinitionInterface;
-
-    /**
-     * @param int|null $length
-     * @param int|null $afterSeparator
-     *
-     * @return ColumnDefinitionInterface
-     */
-    public function float(?int $length = null, ?int $afterSeparator = null): ColumnDefinitionInterface;
-
-    /**
-     * @param int|null $length
-     * @param int|null $afterSeparator
-     *
-     * @return ColumnDefinitionInterface
-     */
-    public function double(?int $length = null, ?int $afterSeparator = null): ColumnDefinitionInterface;
-
-    /**
-     * @param int|null $length
-     * @param int|null $afterSeparator
-     *
-     * @return ColumnDefinitionInterface
-     */
-    public function decimal(?int $length = null, ?int $afterSeparator = null): ColumnDefinitionInterface;
-
-    /**
-     * @return ColumnDefinitionInterface
-     */
-    public function date(): ColumnDefinitionInterface;
-
-    /**
-     * @return ColumnDefinitionInterface
-     */
-    public function datetime(): ColumnDefinitionInterface;
-
-    /**
-     * @return ColumnDefinitionInterface
-     */
-    public function timestamp(): ColumnDefinitionInterface;
-
-    /**
-     * @return ColumnDefinitionInterface
-     */
-    public function time(): ColumnDefinitionInterface;
-
-    /**
-     * @return ColumnDefinitionInterface
-     */
-    public function year(): ColumnDefinitionInterface;
-
-    /**
-     * @return ColumnDefinitionInterface
-     */
-    public function json(): ColumnDefinitionInterface;
+    public function text(): ColumnOptionsInterface;
 
 }

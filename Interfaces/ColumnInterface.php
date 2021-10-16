@@ -13,10 +13,16 @@ interface ColumnInterface
 {
 
     /**
-     * @param string $name
-     *
-     * @return ColumnTypeInterface
+     * @return ColumnsKitInterface
      */
-    public function setColumnName(string $name): ColumnTypeInterface;
+    public function kit(): ColumnsKitInterface;
+
+    /**
+     * @param string   $name
+     * @param callable $callback
+     *
+     * @return ColumnInterface
+     */
+    public function create(string $name, callable $callback): ColumnInterface;
 
 }
