@@ -73,7 +73,7 @@ trait ValueWrapperTrait
     public function autoWrap(string|int|float $value, string $wrapper): string
     {
 
-        if (preg_match('/^[a-zA-Z0-9_-]+\.[a-zA-Z0-9_-]+$/', $value)
+        if (preg_match('/^[^\s+]+\.[^\s+]+$/', $value)
             || preg_match('/^:/', $value)
             || preg_match('/^[0-9]+$/', $value)
             || preg_match('/^([0-9]+\s*(\+|-|\*|%|\**\/)\s*[0-9]+)+$/', $value)
